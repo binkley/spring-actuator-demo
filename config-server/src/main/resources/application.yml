@@ -1,0 +1,29 @@
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+
+logging:
+  level:
+    com.mangofactory: WARN
+    com.netflix: WARN
+    io.undertow: WARN
+    org.springframework: WARN
+
+management:
+  context-path: /manage
+#endpoints:
+#  health:
+#    id: healthcheck
+
+security:
+  basic:
+    enabled: false
+  user:
+    name: user
+    password: secret
+
+spring:
+  cloud:
+    config:
+    username: ${security.user.name}
+    password: ${security.user.password}
