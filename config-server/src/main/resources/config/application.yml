@@ -1,6 +1,8 @@
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10
+    healthCheckUrlPath: ${management.contextPath}/health
+    statusPageUrlPath: ${management.contextPath}/info
 
 logging:
   level:
