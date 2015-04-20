@@ -16,5 +16,9 @@ server:
 spring:
   application:
     name: config-server
+  cloud:
+    config:
+      # Config server is itself the root of configuration
+      enabled: false
   profiles:
     active: native
