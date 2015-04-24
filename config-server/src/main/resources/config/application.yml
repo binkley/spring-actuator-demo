@@ -36,3 +36,5 @@ spring:
     config:
     username: ${security.user.name}
     password: ${security.user.password}
+  main:
+    show_banner: false
