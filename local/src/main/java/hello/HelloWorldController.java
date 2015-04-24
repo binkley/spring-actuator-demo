@@ -24,6 +24,6 @@ public class HelloWorldController {
     public Greeting sayHello(@PathVariable final String name) {
         // Fake enrich the data
         final Greeting greeting = remote.greet(name);
-        return new Greeting(greeting.getId() * 2, greeting.getMessage());
+        return new Greeting(greeting.getMessage());
     }
 }

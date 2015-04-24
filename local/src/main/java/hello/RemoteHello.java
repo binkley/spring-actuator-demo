@@ -43,7 +43,7 @@ public interface RemoteHello {
         }
 
         public Greeting goAway(final String name) {
-            return new Greeting(0, format("You're not welcome, %s.", name));
+            return new Greeting(format("You're not welcome, %s.", name));
         }
     }
 }
