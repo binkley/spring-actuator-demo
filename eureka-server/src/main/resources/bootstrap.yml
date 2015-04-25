@@ -1,0 +1,25 @@
+# Disable Eureka server looking for its cluster
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    healthCheckUrlPath: ${management.contextPath}/health
+    statusPageUrlPath: ${management.contextPath}/info
+    # Not needed in Clound Foundary - Spring Boot does this already
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    password: ${security.user.password}
+
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka
+  cloud:
+    config:
+      uri: http://localhost:8888

@@ -1,0 +1,10 @@
+logging:
+  level:
+    com.mangofactory: WARN
+    com.netflix: WARN
+    io.undertow: WARN
+    org.springframework: WARN
+
+spring:
+  main:
+    show_banner: false

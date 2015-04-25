@@ -1,0 +1,40 @@
+eureka:
+  client:
+    serviceURL:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    healthCheckUrlPath: ${management.contextPath}/health
+    statusPageUrlPath: ${management.contextPath}/info
+    # Not needed in Clound Foundary - Spring Boot does this already
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    password: ${security.user.password}
+
+logging:
+  level:
+    com.mangofactory: WARN
+    com.netflix: WARN
+    io.undertow: WARN
+    org.springframework: WARN
+
+management:
+  context-path: /manage
+#endpoints:
+#  health:
+#    id: healthcheck
+
+security:
+  basic:
+    enabled: false
+  user:
+    name: user
+    password: secret
+
+spring:
+  cloud:
+    config:
+    username: ${security.user.name}
+    password: ${security.user.password}
+  main:
+    show_banner: false
