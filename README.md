@@ -11,7 +11,8 @@ and friends.
 
 ## Spring Boot
 
-- Auditing, event, listener and friends
+- Auditing: see [`AuthenticationDumper`](common/src/main/java/hello/AuthenticationDumper.java)
+  and ilk.
 
 ## Spring Actuator
 
