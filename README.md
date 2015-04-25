@@ -33,9 +33,11 @@ TODO.
 
 ## Spring HATEOAS
 
-TODO.
+See [`LevelMain`](level/src/main/java/hello/LevelMain.java).
 
 ## Netflix Feign
+
+See [`RemoteHello`](local/src/main/java/hello/RemoteHello.java).
 
 ## Netflix Hysterix
 
@@ -57,3 +59,5 @@ TODO.
 TODO.
 
 ## Swagger
+
+See [`HelloWorldMain`](local/src/main/java/hello/HelloWorldMain.java).
