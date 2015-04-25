@@ -4,3 +4,6 @@ server:
 spring:
   application:
     name: remote-hello
+  cloud:
+    config:
+      uri: http://localhost:8888
