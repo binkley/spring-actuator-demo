@@ -4,19 +4,22 @@ import hello.RemoteHello.HystrixHello;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import javax.servlet.http.HttpServletResponse;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
@@ -43,10 +46,10 @@ public class HelloWorldControllerTest {
     @Test
     public void getHello()
             throws Exception {
-        when(remote.greet(Mockito.eq("Bob"))).
+        when(remote.greet(eq("Bob"), any(HttpServletResponse.class))).
                 thenReturn(new Greeting("Hello, Bob!"));
 
-        mvc.perform(MockMvcRequestBuilders.get("/hello-world/Bob").
+        mvc.perform(get("/hello-world/Bob").
                 accept(APPLICATION_JSON)).
                 andExpect(status().isOk()).
                 andExpect(jsonPath("$.message", is(equalTo("Hello, Bob!"))));

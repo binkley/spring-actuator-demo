@@ -1,15 +1,16 @@
 package hello;
 
-import lombok.Data;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 
-@Data
 public class Greeting {
-    private String message;
-
-    public Greeting() {
-    }
+    private final String message;
 
     public Greeting(final String message) {
         this.message = message;
+    }
+
+    @ApiModelProperty(value = "message", notes = "Howdy!", required = true)
+    public String getMessage() {
+        return message;
     }
 }
