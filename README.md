@@ -36,6 +36,8 @@ TODO.
 
 See [`LevelMain`](level/src/main/java/hello/LevelMain.java).
 
+See also [Why I Hate HATEOAS](http://www.jeffknupp.com/blog/2014/06/03/why-i-hate-hateoas/).
+
 ## Netflix Feign
 
 See [`RemoteHello`](local/src/main/java/hello/RemoteHello.java).
