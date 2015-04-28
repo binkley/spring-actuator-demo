@@ -1,5 +1,6 @@
 package hello;
 
+import feign.FeignException;
 import hello.RemoteHello.HystrixHello;
 import org.junit.Before;
 import org.junit.Rule;
@@ -42,13 +43,13 @@ public class HystrixHelloTest {
 
     @Before
     public void setUp() {
+        when(random.nextBoolean()).
+                thenReturn(true);
         wrapper = new HystrixHello(remote, random);
     }
 
     @Test
     public void shouldGreetNicely() {
-        when(random.nextBoolean()).
-                thenReturn(true);
         final Greeting greeting = new Greeting("Hello, Bob!");
         when(remote.greet(eq("Bob"))).
                 thenReturn(greeting);
@@ -59,9 +60,10 @@ public class HystrixHelloTest {
 
     @Test
     public void shouldGreetBadly() {
-        thrown.expect(IllegalStateException.class);
-        when(random.nextBoolean()).
-                thenReturn(false);
+        thrown.expect(FeignException.class);
+
+        when(remote.greet(eq("Bob"))).
+                thenThrow(FeignException.class);
 
         wrapper.greet("Bob", response);
     }
